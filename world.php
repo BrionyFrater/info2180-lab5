@@ -13,6 +13,35 @@ $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$lookup = $_GET['lookup'];
+
+if($lookup === 'cities'){
+  $stmt = $conn->query("SELECT c.name as city, c.district, c.population as city_population FROM cities c JOIN countries coun ON c.country_code=coun.code WHERE coun.name LIKE '%$country%'");
+  
+  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Distrtict</th>
+    <th>Population</th>
+  </tr>
+  
+  <?php foreach ($results as $row): ?>
+    <tr>
+      <td><?= $row['city']?></td>
+      <td><?= $row['district']?></td>
+      <td><?= $row['city_population']?></td>
+    </tr>
+  <?php endforeach; ?>
+  
+</table>
+
+
+<?php
+}else{
 ?>
 
 <table>
@@ -34,3 +63,4 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
   
 </table>
 
+<?php } ?>
