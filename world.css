@@ -7,7 +7,7 @@ body{
     font-size: 20px;
     color: #fff;
 
-    background-image: url("earthBackground.jpg");
+    background-image: url("earthBackground.png");
     background-size: auto;
     
     display: flex;
