@@ -10,7 +10,7 @@ $country = strval(htmlspecialchars(stripslashes(trim($_GET['country']))));
 
 $term = "%$country%";
 
-$stmt = $conn->prepare("SELECT * FROM countries");
+$stmt = $conn->prepare("SELECT * FROM countries WHERE `name` LIKE :term");
 $stmt->bindParam(':term', $term, PDO::PARAM_STR);
 $stmt->execute();
 
