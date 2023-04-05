@@ -22,6 +22,9 @@ DROP DATABASE IF EXISTS world;
 CREATE DATABASE world;
 USE world;
 
+GRANT ALL PRIVILEGES ON world TO 'lab5_user'@'localhost' IDENTIFIED BY 'password123';
+
+
 --
 -- Table structure for table `cities`
 --
